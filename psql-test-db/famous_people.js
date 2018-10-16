@@ -12,16 +12,16 @@ const client = new pg.Client({
 });
 
 function findPersonDetails(result) {
-     console.log(`Found ${result.length} person(s) by the name ${process.argv[2]}`)
-    result.forEach((person, i) => {
-      let personDetails = '- '
-      personDetails += (i + 1).toString() + ': '
-                    +  person.first_name + ' ' + person.last_name + ', born '
-                    +  `'${person.birthdate.toDateString().slice(4)}'`;
-      console.log(personDetails);
-    });
-
+  console.log(`Found ${result.length} person(s) by the name ${process.argv[2]}`)
+  result.forEach((person, i) => {
+    let personDetails = '- '
+    personDetails += (i + 1).toString() + ': '
+                  +  person.first_name + ' ' + person.last_name + ', born '
+                  +  `'${person.birthdate.toDateString().slice(4)}'`;
+    console.log(personDetails);
+  });
 }
+
 client.connect((err) => {
   if (err) {
     return console.error('Connection Error', err);
